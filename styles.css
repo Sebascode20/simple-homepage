@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --links-hover-color: #2a4dd0;
+  --main-bg-color: #f2f9fe;
+  --btn-text-color: #ffffff;
+  --check-bg-color: #4ca154;
+  --heading-color: #223344;
+  --text-color: #111729;
+  --text-secondary-color: #909193;
+}
+
+body {
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.125rem;
+  background-color: var(--main-bg-color);
+}
+
+h1 {
+  font-size: 3.75rem;
+  color: var(--heading-color);
+}
+
+.author-info {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 16px;
+  color: rgb(55, 65, 81);
+}
+
+.author-info a {
+  text-decoration: none;
+}
+
+.header__nav-item a {
+  text-decoration: none;
+  color: var(--text-color);
+}
