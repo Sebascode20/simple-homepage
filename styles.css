@@ -85,9 +85,11 @@ main {
 .header__nav-list {
   display: flex;
   flex-direction: column;
-  height: 40vh;
-  margin: 3rem auto;
   justify-content: space-evenly;
+  align-items: center;
+  height: 40vh;
+  margin: 5rem auto;
+  gap: 35px;
 }
 
 .header__checkbox:checked ~ .header__nav {
@@ -99,9 +101,27 @@ main {
   list-style: none;
 }
 
+.header__nav-list:last-child li button {
+  margin-top: 2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--heading-color);
+}
+
+.header__nav-list:last-child li button img {
+  width: 18px;
+  height: 18px;
+}
+
+.header__nav-list:last-child li button img[src="./resources/Sun_fill.svg"] {
+  border-radius: 10px;
+  border: none;
+  background-color: var(--main-bg-color);
+}
+
 .header__nav-list .header__nav-item a {
   text-decoration: none;
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   font-weight: 500;
   color: var(--text-secondary-color);
 }
@@ -173,4 +193,9 @@ main {
 
 .content-right {
   max-width: 500px;
+}
+
+.dark-theme {
+  background-color: var(--text-color);
+  color: var(--btn-text-color);
 }
