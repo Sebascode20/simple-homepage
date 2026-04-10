@@ -18,6 +18,10 @@
   </head>
   <body>
     <header class="header">
+      <input class="header__checkbox" type="checkbox" id="open-menu" />
+      <label for="open-menu" class="header__open-nav-button" role="button"
+        ><img src="./resources/hamburger-button.svg" alt="hamburger button"
+      /></label>
       <div class="header__logo-container">
         <img
           class="header__logo"
@@ -34,14 +38,10 @@
           <li class="header__nav-item"><a href="#">Resource</a></li>
           <li class="header__nav-item"><a href="#">Contact</a></li>
         </ul>
+        <div class="header__btn-theme">
+          <button id="theme-switch"></button>
+        </div>
       </nav>
-      <input class="header__checkbox" type="checkbox" id="open-menu" />
-      <label class="header__open-nav-button" for="open-menu" role="button"
-        ><img src="./resources/hamburger-button.svg" alt="hamburger button"
-      /></label>
-      <div class="header__btn-theme">
-        <button id="theme-switch"></button>
-      </div>
     </header>
     <main>
       <div class="content-left">
@@ -87,5 +87,6 @@
         >devChallenges.io</a
       >.
     </footer>
+    <script src="index.js"></script>
   </body>
 </html>
