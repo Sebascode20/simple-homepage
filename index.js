@@ -10,12 +10,15 @@ const $checkbox = document.getElementById("open-menu"),
   $headerLogo = document.querySelector(".header__logo"),
   $link = document.getElementById("link-demo"),
   $btnMenu = document.getElementById("hambuger-menu"),
-  $btnClose = document.getElementById("close-button"),
   $headerNav = document.querySelector(".header__nav"),
-  $headerNavItem = document.querySelectorAll(".header__nav-item");
+  $headerNavItem = document.querySelectorAll(
+    ".header__nav-item:not(:first-child) a",
+  );
 
-let darkTextColor =
+let darkThemeTextColor =
   getComputedStyle($html).getPropertyValue("--btn-text-color");
+
+let mainBgColor = getComputedStyle($html).getPropertyValue("--main-bg-color");
 
 $checkbox.addEventListener("click", function () {
   if (
@@ -38,15 +41,27 @@ $checkbox.addEventListener("click", function () {
 });
 
 $btnTheme.addEventListener("click", function () {
-  $btnTheme.insertAdjacentElement("afterbegin", $sunIcon);
+  //$btnTheme.insertAdjacentElement("afterbegin", $sunIcon);
   $body.classList.toggle("dark-theme");
-  $heading.style.color = darkTextColor;
+  $heading.style.color = darkThemeTextColor;
   $headerNav.classList.add("dark-theme");
-  $link.style.color = darkTextColor;
+  $link.style.color = darkThemeTextColor;
   $btnMenu.style.filter = "brightness(0) invert(1)";
 
+  $moonIcon.style.filter = "brightness(1) invert(0)";
+  $moonIcon.style.backgroundColor = mainBgColor;
+  $moonIcon.style.borderRadius = "10px";
+  $moonIcon.style.marginLeft = "2px";
+
+  $sunIcon.style.backgroundColor = "transparent";
+  $sunIcon.style.filter = "brightness(0) invert(1)";
+
+  $headerNavItem.forEach((link) => {
+    link.style.color = darkThemeTextColor;
+  });
+
   $text.forEach((p) => {
-    p.style.color = darkTextColor;
+    p.style.color = darkThemeTextColor;
   });
 
   $headerLogo.setAttribute("src", "./resources/logo-dark.svg");
@@ -58,9 +73,15 @@ $btnTheme.addEventListener("click", function () {
     $link.removeAttribute("style");
     $headerNav.classList.remove("dark-theme");
     $btnMenu.removeAttribute("style");
+    $moonIcon.removeAttribute("style");
+    $sunIcon.removeAttribute("style");
 
     $text.forEach((p) => {
       p.removeAttribute("style");
+    });
+
+    $headerNavItem.forEach((link) => {
+      link.removeAttribute("style");
     });
   }
 });

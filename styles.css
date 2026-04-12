@@ -103,6 +103,7 @@ main {
 
 .header__nav-list:last-child li button {
   margin-top: 2rem;
+  padding: 2px 2px 0 1px;
   border: none;
   border-radius: 10px;
   background-color: var(--heading-color);
@@ -114,6 +115,7 @@ main {
 }
 
 .header__nav-list:last-child li button img[src="./resources/Sun_fill.svg"] {
+  margin-left: 2px;
   border-radius: 10px;
   border: none;
   background-color: var(--main-bg-color);
@@ -146,7 +148,7 @@ main {
 }
 
 .benefits p {
-  font-size: 0.875rem;
+  font-size: clamp(0.8rem, 2.2vw, 0.875rem);
   color: var(--text-secondary-color);
 }
 
@@ -197,4 +199,11 @@ main {
 
 .dark-theme {
   background-color: var(--text-color);
+}
+
+#moon-icon {
+  width: 16px;
+  height: 16px;
+  margin-bottom: 1px;
+  filter: brightness(0) invert(1);
 }
