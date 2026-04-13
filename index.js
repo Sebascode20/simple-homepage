@@ -8,6 +8,7 @@ const $checkbox = document.getElementById("open-menu"),
   $text = document.querySelectorAll("p"),
   $heading = document.querySelector("h1"),
   $headerLogo = document.querySelector(".header__logo"),
+  $authorInfo = document.querySelector(".author-info"),
   $link = document.getElementById("link-demo"),
   $btnMenu = document.getElementById("hambuger-menu"),
   $headerNav = document.querySelector(".header__nav"),
@@ -21,6 +22,7 @@ let darkThemeTextColor =
 let mainBgColor = getComputedStyle($html).getPropertyValue("--main-bg-color");
 
 $checkbox.addEventListener("click", function () {
+  $body.classList.toggle("active-menu");
   if (
     $labelCheckbox.querySelector("img").getAttribute("src") ===
     "./resources/hamburger-button.svg"
@@ -41,12 +43,12 @@ $checkbox.addEventListener("click", function () {
 });
 
 $btnTheme.addEventListener("click", function () {
-  //$btnTheme.insertAdjacentElement("afterbegin", $sunIcon);
   $body.classList.toggle("dark-theme");
   $heading.style.color = darkThemeTextColor;
   $headerNav.classList.add("dark-theme");
   $link.style.color = darkThemeTextColor;
   $btnMenu.style.filter = "brightness(0) invert(1)";
+  $authorInfo.style.color = "white";
 
   $moonIcon.style.filter = "brightness(1) invert(0)";
   $moonIcon.style.backgroundColor = mainBgColor;
@@ -75,6 +77,7 @@ $btnTheme.addEventListener("click", function () {
     $btnMenu.removeAttribute("style");
     $moonIcon.removeAttribute("style");
     $sunIcon.removeAttribute("style");
+    $authorInfo.removeAttribute("style");
 
     $text.forEach((p) => {
       p.removeAttribute("style");

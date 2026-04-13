@@ -16,6 +16,9 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 100dvh;
   font-family: "Poppins", sans-serif;
   font-size: 1.125rem;
@@ -28,7 +31,7 @@ img {
 }
 
 h1 {
-  font-size: clamp(2.5rem, 2.2vw, 3.75rem);
+  font-size: clamp(2.5rem, 10vw, 3.75rem);
   color: var(--heading-color);
   font-weight: 700;
   text-wrap: balance;
@@ -75,7 +78,7 @@ main {
 .header__nav {
   display: none;
   position: absolute;
-  height: 160vh;
+  height: 100vh;
   width: 50vw;
   top: 0;
   z-index: -1;
@@ -95,6 +98,7 @@ main {
 .header__checkbox:checked ~ .header__nav {
   display: flex;
   right: 0;
+  overflow: hidden;
 }
 
 .header__nav-item {
@@ -132,6 +136,11 @@ main {
   color: var(--links-hover-color);
   text-decoration: underline;
   text-underline-offset: 5px;
+}
+
+.active-menu {
+  overflow: hidden;
+  height: 100%;
 }
 
 /* ------- MAIN SECTION ------- */
@@ -179,7 +188,7 @@ main {
 }
 
 .content-left > p {
-  font-size: clamp(1rem, 3.2vw, 1.125rem);
+  font-size: clamp(1rem, 1vw, 1.125rem);
   margin-bottom: 0.6rem;
   color: var(--heading-color);
   font-weight: 600;
@@ -206,4 +215,70 @@ main {
   height: 16px;
   margin-bottom: 1px;
   filter: brightness(0) invert(1);
+}
+
+@media screen and (min-width: 48rem) {
+  main {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .benefits > img + p {
+    color: var(--heading-color);
+    font-weight: 500;
+  }
+
+  .content-left {
+    margin-block: initial;
+  }
+
+  .content-right img {
+    width: 100%;
+  }
+
+  .content-left h1 + p {
+    color: var(--heading-color);
+    text-wrap: initial;
+  }
+
+  .header {
+    height: 10vh;
+    margin-bottom: 40px;
+    padding: 20px;
+  }
+
+  .header__logo,
+  .header__nav-list:last-child li button {
+    vertical-align: middle;
+  }
+
+  .header__nav {
+    display: block;
+    position: static;
+    width: auto;
+    height: auto;
+    z-index: initial;
+    background-color: initial;
+  }
+
+  .header__nav-list {
+    flex-direction: row;
+    width: auto;
+    height: auto;
+  }
+
+  .header__open-nav-button {
+    display: none;
+  }
+
+  .header__nav-list .header__nav-item a {
+    font-size: 0.875rem;
+    color: var(--heading-color);
+    font-weight: 600;
+  }
+
+  .header__nav-list:last-child li button {
+    margin-top: initial;
+    margin-left: 105px;
+  }
 }
