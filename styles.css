@@ -304,6 +304,10 @@ button img[src="./resources/Moon_fill.svg"] {
   h1 {
     text-wrap: balance;
   }
+
+  .header__nav-list:last-child li button {
+    left: 300px;
+  }
 }
 
 @media (orientation: portrait) and (min-width: 43.75rem) {
