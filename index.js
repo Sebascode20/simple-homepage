@@ -1,5 +1,4 @@
-const $checkbox = document.getElementById("open-menu"),
-  $labelCheckbox = document.querySelector(".header__open-nav-button"),
+const $labelCheckbox = document.querySelector(".header__open-nav-button"),
   $btnTheme = document.getElementById("theme-switch"),
   $sunIcon = document.getElementById("sun-icon"),
   $moonIcon = document.getElementById("moon-icon"),
@@ -21,70 +20,74 @@ let darkThemeTextColor =
 
 let mainBgColor = getComputedStyle($html).getPropertyValue("--main-bg-color");
 
-$checkbox.addEventListener("click", function () {
-  $body.classList.toggle("active-menu");
-  if (
-    $labelCheckbox.querySelector("img").getAttribute("src") ===
-    "./resources/hamburger-button.svg"
-  ) {
-    $labelCheckbox
-      .querySelector("img")
-      .setAttribute("src", "./resources/close-button.svg");
+document.addEventListener("click", (e) => {
+  if (e.target.matches("#open-menu")) {
+    $body.classList.toggle("active-menu");
+    if (
+      $labelCheckbox.querySelector("img").getAttribute("src") ===
+      "./resources/hamburger-button.svg"
+    ) {
+      $labelCheckbox
+        .querySelector("img")
+        .setAttribute("src", "./resources/close-button.svg");
 
-    $labelCheckbox.querySelector("img").setAttribute("id", "close-button");
+      $labelCheckbox.querySelector("img").setAttribute("id", "close-button");
 
-    $labelCheckbox.querySelector("img").setAttribute("alt", "close button");
-  } else {
-    $labelCheckbox
-      .querySelector("img")
-      .setAttribute("src", "./resources/hamburger-button.svg");
-    $labelCheckbox.querySelector("img").setAttribute("alt", "hamburger button");
+      $labelCheckbox.querySelector("img").setAttribute("alt", "close button");
+    } else {
+      $labelCheckbox
+        .querySelector("img")
+        .setAttribute("src", "./resources/hamburger-button.svg");
+      $labelCheckbox
+        .querySelector("img")
+        .setAttribute("alt", "hamburger button");
+    }
   }
-});
 
-$btnTheme.addEventListener("click", function () {
-  $body.classList.toggle("dark-theme");
-  $heading.style.color = darkThemeTextColor;
-  $headerNav.classList.add("dark-theme");
-  $link.style.color = darkThemeTextColor;
-  $btnMenu.style.filter = "brightness(0) invert(1)";
-  $authorInfo.style.color = "white";
+  if (e.target.matches("#sun-icon") || e.target.matches("#moon-icon")) {
+    $body.classList.toggle("dark-theme");
+    $heading.style.color = darkThemeTextColor;
+    $headerNav.classList.add("dark-theme");
+    $link.style.color = darkThemeTextColor;
+    $btnMenu.style.filter = "brightness(0) invert(1)";
+    $authorInfo.style.color = "white";
 
-  $moonIcon.style.filter = "brightness(1) invert(0)";
-  $moonIcon.style.backgroundColor = mainBgColor;
-  $moonIcon.style.borderRadius = "10px";
-  $moonIcon.style.marginLeft = "2px";
+    $moonIcon.style.filter = "brightness(1) invert(0)";
+    $moonIcon.style.backgroundColor = mainBgColor;
+    $moonIcon.style.borderRadius = "10px";
+    $moonIcon.style.marginLeft = "2px";
 
-  $sunIcon.style.backgroundColor = "transparent";
-  $sunIcon.style.filter = "brightness(0) invert(1)";
-
-  $headerNavItem.forEach((link) => {
-    link.style.color = darkThemeTextColor;
-  });
-
-  $text.forEach((p) => {
-    p.style.color = darkThemeTextColor;
-  });
-
-  $headerLogo.setAttribute("src", "./resources/logo-dark.svg");
-
-  if (!$body.classList.contains("dark-theme")) {
-    $btnTheme.insertAdjacentElement("afterbegin", $moonIcon);
-    $headerLogo.setAttribute("src", "./resources/logo-light.svg");
-    $heading.removeAttribute("style");
-    $link.removeAttribute("style");
-    $headerNav.classList.remove("dark-theme");
-    $btnMenu.removeAttribute("style");
-    $moonIcon.removeAttribute("style");
-    $sunIcon.removeAttribute("style");
-    $authorInfo.removeAttribute("style");
-
-    $text.forEach((p) => {
-      p.removeAttribute("style");
-    });
+    $sunIcon.style.backgroundColor = "transparent";
+    $sunIcon.style.filter = "brightness(0) invert(1)";
 
     $headerNavItem.forEach((link) => {
-      link.removeAttribute("style");
+      link.style.color = darkThemeTextColor;
     });
+
+    $text.forEach((p) => {
+      p.style.color = darkThemeTextColor;
+    });
+
+    $headerLogo.setAttribute("src", "./resources/logo-dark.svg");
+
+    if (!$body.classList.contains("dark-theme")) {
+      $btnTheme.insertAdjacentElement("afterbegin", $moonIcon);
+      $headerLogo.setAttribute("src", "./resources/logo-light.svg");
+      $heading.removeAttribute("style");
+      $link.removeAttribute("style");
+      $headerNav.classList.remove("dark-theme");
+      $btnMenu.removeAttribute("style");
+      $moonIcon.removeAttribute("style");
+      $sunIcon.removeAttribute("style");
+      $authorInfo.removeAttribute("style");
+
+      $text.forEach((p) => {
+        p.removeAttribute("style");
+      });
+
+      $headerNavItem.forEach((link) => {
+        link.removeAttribute("style");
+      });
+    }
   }
 });
